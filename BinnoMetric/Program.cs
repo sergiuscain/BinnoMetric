@@ -1,3 +1,7 @@
+using BinnoMetric.DataBase;
+using BinnoMetric.Service;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,10 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
+string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<BinnoDBContext>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddTransient<EmployeesService>();
 
 var app = builder.Build();
 
