@@ -1,0 +1,6 @@
+@BinnoMetric_HostAddress = http://localhost:5031
+
+GET {{BinnoMetric_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
