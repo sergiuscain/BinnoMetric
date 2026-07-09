@@ -14,6 +14,7 @@ string connectionString = builder.Configuration.GetConnectionString("DefaultConn
 builder.Services.AddDbContext<BinnoDBContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddTransient<EmployeesService>();
+builder.Services.AddTransient<IntegrationService>();
 
 var app = builder.Build();
 
