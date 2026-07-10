@@ -14,7 +14,7 @@ namespace BinnoMetric.Controllers
         {
             _employeesService = employeesService;
         }
-        [HttpPost]
+        [HttpPost("Add")]
         public async Task<IActionResult> AddEmployee(Employee employee)
         {
             await _employeesService.AddEmployee(employee);
