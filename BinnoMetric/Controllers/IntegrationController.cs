@@ -1,5 +1,4 @@
-﻿using BinnoMetric.Models;
-using BinnoMetric.Service;
+﻿using BinnoMetric.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BinnoMetric.Controllers;
