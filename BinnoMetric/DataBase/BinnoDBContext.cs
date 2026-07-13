@@ -1,4 +1,4 @@
-﻿using BinnoMetric.Models;
+﻿using BinnoMetric.DataBase.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BinnoMetric.DataBase;

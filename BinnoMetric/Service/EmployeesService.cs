@@ -1,5 +1,5 @@
 ﻿using BinnoMetric.DataBase;
-using BinnoMetric.Models;
+using BinnoMetric.DataBase.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BinnoMetric.Service;

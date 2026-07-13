@@ -1,5 +1,5 @@
 ﻿using BinnoMetric.Abstractions;
-using BinnoMetric.Models;
+using BinnoMetric.DataBase.Models;
 using BinnoMetric.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

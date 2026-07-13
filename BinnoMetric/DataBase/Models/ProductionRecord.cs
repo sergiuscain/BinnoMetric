@@ -1,4 +1,4 @@
-﻿namespace BinnoMetric.Models;
+﻿namespace BinnoMetric.DataBase.Models;
 
 public class ProductionRecord
 {
