@@ -74,6 +74,68 @@ public static class ParserDTOToModel
     }
 
 
+
+    // Экспорт модели в DTO для отображения
+    public static DowntimeRecordDTO ToDTO(DowntimeRecord model)
+    {
+        return new DowntimeRecordDTO
+        {
+            DowntimeTypeId = model.DowntimeTypeId,
+            DurationMinutes = model.DurationMinutes,
+            ProductionRecordId = model.ProductionRecordId,
+        };
+    }
+    public static DowntimeTypeDTO ToDTO(DowntimeType model)
+    {
+        return new DowntimeTypeDTO
+        {
+            IsPlanned = model.IsPlanned,
+            Name = model.Name,
+        };
+    }
+    public static EmployeeDTO ToDTO(Employee model)
+    {
+        return new EmployeeDTO
+        {
+            FullName = model.FullName,
+        };
+    }
+    public static EquipmentLineDTO ToDTO(EquipmentLine model)
+    {
+        return new EquipmentLineDTO
+        {
+            Name = model.Name,
+        };
+    }
+    public static ProductDTO ToDTO(Product model)
+    {
+        return new ProductDTO
+        {
+            Dosage = model.Dosage,
+            Form = model.Form,
+            Name = model.Name,
+            PackSize = model.PackSize,
+        };
+    }
+    public static ProductionRecordDTO ToDTO(ProductionRecord model)
+    {
+        return new ProductionRecordDTO
+        {
+            ActualQuantity = model.ActualQuantity,
+            Comments = model.Comments,
+            EquipmentLineId = model.EquipmentLineId,
+            StartTime = model.StartTime,
+            EndTime = model.EndTime,
+            SeriesNumber = model.SeriesNumber,
+            ProductId = model.ProductId,
+            SeniorOperatorId = model.SeniorOperatorId,
+            OperatorDId = model.OperatorDId,
+            OperatorNKLId = model.OperatorNKLId,
+            PackerId = model.PackerId,
+        };
+    }
+
+
     // Экспорт полного ФИО в краткий формат типа: Королев.С.С
     public static string ToShortName(this string fullName)
     {
