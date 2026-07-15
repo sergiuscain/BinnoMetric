@@ -1,6 +1,7 @@
 ﻿using BinnoMetric.Abstractions;
 using BinnoMetric.DataBase.Models;
 using BinnoMetric.DTO;
+using BinnoMetric.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,35 +11,40 @@ namespace BinnoMetric.Controllers
     [ApiController]
     public class ProductsController : ControllerBase, ICanAdd<ProductDTO>, ICanGet<ProductDTO>, ICanUpdate<ProductDTO>, ICanDelete<ProductDTO>
     {
-        [HttpPost("AddProduct")]
-        public Task<ProductDTO> AddAsync(ProductDTO value)
+        private ProductService _productService;
+        public ProductsController(ProductService productService)
         {
-            throw new NotImplementedException();
+            _productService = productService;
+        }
+        [HttpPost("AddProduct")]
+        public async Task<ProductDTO> AddAsync(ProductDTO value)
+        {
+            return await _productService.AddAsync(value);
         }
         [HttpPost("AddProducts")]
-        public Task<ICollection<ProductDTO>> AddRangeAsync(ICollection<ProductDTO> values)
+        public async Task<ICollection<ProductDTO>> AddRangeAsync(ICollection<ProductDTO> values)
         {
-            throw new NotImplementedException();
+            return await _productService.AddAsync(values);
         }
         [HttpDelete("DeleteProduct")]
-        public Task<bool> CanDeleteAsync(ProductDTO value)
+        public async Task<bool> DeleteAsync(ProductDTO value)
         {
-            throw new NotImplementedException();
+            return await _productService.DeleteAsync(value);
         }
         [HttpGet("GetProducts")]
-        public Task<ICollection<ProductDTO>> GetAllAsync()
+        public async Task<ICollection<ProductDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _productService.GetAllAsync();
         }
         [HttpGet("GetProduct")]
-        public Task<ProductDTO> GetAsync(string id)
+        public async Task<ProductDTO> GetAsync(string id)
         {
-            throw new NotImplementedException();
+            return await _productService.GetAsync(id);
         }
         [HttpPut("UpdateProduct")]
-        public Task<ProductDTO> UpdateAsync(ProductDTO value)
+        public async Task<ProductDTO> UpdateAsync(ProductDTO value)
         {
-            throw new NotImplementedException();
+            return await _productService.UpdateAsync(value);
         }
     }
 }

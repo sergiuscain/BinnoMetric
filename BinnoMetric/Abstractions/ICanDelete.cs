@@ -1,5 +1,5 @@
 ﻿namespace BinnoMetric.Abstractions;
 public interface ICanDelete<T>
 {
-    public Task<bool> CanDeleteAsync(T value);
+    public Task<bool> DeleteAsync(T value);
 }
