@@ -4,6 +4,7 @@ using BinnoMetric.DTO;
 namespace BinnoMetric.Service;
 public static class ParserDTOToModel
 {
+    // Экспорт DTO в модель
     public static DowntimeRecord ToModel(DowntimeRecordDTO dto)
     {
         return new DowntimeRecord
@@ -73,7 +74,7 @@ public static class ParserDTOToModel
     }
 
 
-
+    // Экспорт полного ФИО в краткий формат типа: Королев.С.С
     public static string ToShortName(this string fullName)
     {
         var parsedNames = fullName.Split(' ');
