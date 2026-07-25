@@ -12,6 +12,7 @@ public static class ParserDTOToModel
             DowntimeTypeId = dto.DowntimeTypeId,
             DurationMinutes = dto.DurationMinutes,
             ProductionRecordId = dto.ProductionRecordId,
+            Id = dto.Id,
         };
     }
     public static DowntimeType ToModel(this DowntimeTypeDTO dto)
@@ -21,6 +22,7 @@ public static class ParserDTOToModel
             IsActive = true,
             IsPlanned = dto.IsPlanned,
             Name = dto.Name,
+            Id = dto.Id,
         };
     }
     public static Employee ToModel(this EmployeeDTO dto)
@@ -29,7 +31,8 @@ public static class ParserDTOToModel
         {
             FullName = dto.FullName,
             IsActive = true,
-            ShortName = dto.FullName.ToShortName()
+            ShortName = dto.FullName.ToShortName(),
+            Id = dto.Id,
         };
     }
     public static EquipmentLine ToModel(this EquipmentLineDTO dto)
@@ -38,7 +41,8 @@ public static class ParserDTOToModel
         {
             Code = dto.Name,
             Name = dto.Name,
-            IsActive = true
+            IsActive = true,
+            Id = dto.Id,
         };
     }
     public static Product ToModel(this ProductDTO dto)
@@ -50,7 +54,8 @@ public static class ParserDTOToModel
             Name = dto.Name,
             PackSize = dto.PackSize,
             IsActive = true,
-            ShortName = dto.Name
+            ShortName = dto.Name,
+            Id = dto.Id,
         };
     }
     public static ProductionRecord ToModel(this ProductionRecordDTO dto)
@@ -70,6 +75,7 @@ public static class ParserDTOToModel
             OperatorDId = dto.OperatorDId,
             OperatorNKLId = dto.OperatorNKLId,
             PackerId = dto.PackerId,
+            Id = dto.Id,
         };
     }
 
@@ -83,6 +89,7 @@ public static class ParserDTOToModel
             DowntimeTypeId = model.DowntimeTypeId,
             DurationMinutes = model.DurationMinutes,
             ProductionRecordId = model.ProductionRecordId,
+            Id = model.Id,
         };
     }
     public static DowntimeTypeDTO ToDTO(this DowntimeType model)
@@ -91,6 +98,7 @@ public static class ParserDTOToModel
         {
             IsPlanned = model.IsPlanned,
             Name = model.Name,
+            Id = model.Id,
         };
     }
     public static EmployeeDTO ToDTO(this Employee model)
@@ -98,6 +106,7 @@ public static class ParserDTOToModel
         return new EmployeeDTO
         {
             FullName = model.FullName,
+            Id = model.Id,
         };
     }
     public static EquipmentLineDTO ToDTO(this EquipmentLine model)
@@ -105,6 +114,7 @@ public static class ParserDTOToModel
         return new EquipmentLineDTO
         {
             Name = model.Name,
+            Id = model.Id,
         };
     }
     public static ProductDTO ToDTO(this Product model)
@@ -133,6 +143,7 @@ public static class ParserDTOToModel
             OperatorDId = model.OperatorDId,
             OperatorNKLId = model.OperatorNKLId,
             PackerId = model.PackerId,
+            Id = model.Id,
         };
     }
 

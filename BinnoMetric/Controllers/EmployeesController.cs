@@ -19,34 +19,35 @@ namespace BinnoMetric.Controllers
         [HttpPost("AddEmployee")]
         public async Task<EmployeeDTO> AddAsync(EmployeeDTO employee)
         {
-            throw new NotImplementedException();
-            //return await _employeesService.AddEmployee(employee);
+            return await _employeesService.AddAsync(employee);
         }
 
         [HttpPost("AddEmployees")]
-        public Task<ICollection<EmployeeDTO>> AddRangeAsync(ICollection<EmployeeDTO> values)
+        public async Task<ICollection<EmployeeDTO>> AddRangeAsync(ICollection<EmployeeDTO> values)
         {
-            throw new NotImplementedException();
+            return await _employeesService.AddRangeAsync(values);
         }
         [HttpPut("DeleteEmployee")]
-        public Task<bool> DeleteAsync(int employeeId)
+        public async Task<bool> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _employeesService.DeleteAsync(id);
         }
         [HttpGet("GetEmployees")]
-        public Task<ICollection<EmployeeDTO>> GetAllAsync()
+        public async Task<ICollection<EmployeeDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _employeesService.GetAllAsync();
         }
         [HttpGet("GetEmployee")]
-        public Task<EmployeeDTO> GetAsync(int id)
+        public async Task<EmployeeDTO> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _employeesService.GetAsync(id);
         }
-        [HttpPut("UpdateEmployee")]
-        public Task<EmployeeDTO> UpdateAsync(EmployeeDTO value)
-        {
-            throw new NotImplementedException();
-        }
+        // Потом разберусь, как правильно обновлять сотрудника. Там надо с парсингом в DTO и обратно разобраться.
+        ////internal async Task<EmployeeDTO> UpdateAsync(EmployeeDTO value)
+        ////[HttpPut("UpdateEmployee")]
+        ////public async Task<EmployeeDTO> UpdateAsync(EmployeeDTO value)
+        ////{
+        ////    return await _employeesService.UpdateAsync(value);
+        ////}
     }
 }
