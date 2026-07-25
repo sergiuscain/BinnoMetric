@@ -39,7 +39,7 @@ namespace BinnoMetric.Controllers
             throw new NotImplementedException();
         }
         [HttpGet("GetEmployee")]
-        public Task<EmployeeDTO> GetAsync(string id)
+        public Task<EmployeeDTO> GetAsync(int id)
         {
             throw new NotImplementedException();
         }

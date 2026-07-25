@@ -40,7 +40,7 @@ namespace BinnoMetric.Controllers
             throw new NotImplementedException();
         }
         [HttpGet("GetDowntimeRecord")]
-        public Task<DowntimeRecordDTO> GetAsync(string id)
+        public Task<DowntimeRecordDTO> GetAsync(int id)
         {
             throw new NotImplementedException();
         }
@@ -50,7 +50,7 @@ namespace BinnoMetric.Controllers
             throw new NotImplementedException();
         }
         [HttpGet("GetDowntimeType")]
-        Task<DowntimeTypeDTO> ICanGet<DowntimeTypeDTO>.GetAsync(string id)
+        Task<DowntimeTypeDTO> ICanGet<DowntimeTypeDTO>.GetAsync(int id)
         {
             throw new NotImplementedException();
         }

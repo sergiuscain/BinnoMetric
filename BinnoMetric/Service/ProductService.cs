@@ -1,35 +1,96 @@
-﻿using BinnoMetric.DTO;
+﻿using BinnoMetric.DataBase;
+using BinnoMetric.DTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace BinnoMetric.Service;
 
 public class ProductService
 {
+    private readonly BinnoDBContext _dbContext;
+    public ProductService(BinnoDBContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
     internal async Task<ProductDTO> AddAsync(ProductDTO values)
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _dbContext.Products.AddAsync(values.ToModel());
+            await _dbContext.SaveChangesAsync();
+            return values;
+        }
+        catch
+        {
+            return null;
+        }
     }
     internal async Task<ICollection<ProductDTO>> AddAsync(ICollection<ProductDTO> values)
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _dbContext.Products.AddRangeAsync(values.Select(x => x.ToModel()));
+            await _dbContext.SaveChangesAsync();
+            return values;
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     internal async Task<bool> DeleteAsync(ProductDTO value)
     {
-        throw new NotImplementedException();
+        try
+        {
+             var product = await _dbContext.Products.FirstOrDefaultAsync(x => x.Id == value.Id);
+            _dbContext.Products.Remove(product);
+            await _dbContext.SaveChangesAsync();
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     internal async Task<ICollection<ProductDTO>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        try
+        {
+             var products = await _dbContext.Products.ToListAsync();
+             var productsDto = products.Select(x => x.ToDTO()).ToList();
+             return productsDto;
+        }
+        catch
+        {
+            return null;
+        }
     }
 
-    internal async Task<ProductDTO> GetAsync(string id)
+    internal async Task<ProductDTO> GetAsync(int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var product = await _dbContext.Products.FirstOrDefaultAsync(x => x.Id == id);
+            return product.ToDTO();
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     internal async Task<ProductDTO> UpdateAsync(ProductDTO value)
     {
-        throw new NotImplementedException();
+        try
+        {
+            _dbContext.Products.Update(value.ToModel());
+            await _dbContext.SaveChangesAsync();
+            return value;
+        }
+        catch
+        {
+            return null;
+        }
     }
 }

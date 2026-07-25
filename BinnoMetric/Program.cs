@@ -15,6 +15,7 @@ builder.Services.AddDbContext<BinnoDBContext>(options => options.UseSqlServer(co
 
 builder.Services.AddTransient<EmployeesService>();
 builder.Services.AddTransient<IntegrationService>();
+builder.Services.AddTransient<ProductService>();
 
 var app = builder.Build();
 

@@ -5,7 +5,7 @@ namespace BinnoMetric.Service;
 public static class ParserDTOToModel
 {
     // Экспорт DTO в модель
-    public static DowntimeRecord ToModel(DowntimeRecordDTO dto)
+    public static DowntimeRecord ToModel(this DowntimeRecordDTO dto)
     {
         return new DowntimeRecord
         {
@@ -14,7 +14,7 @@ public static class ParserDTOToModel
             ProductionRecordId = dto.ProductionRecordId,
         };
     }
-    public static DowntimeType ToModel(DowntimeTypeDTO dto)
+    public static DowntimeType ToModel(this DowntimeTypeDTO dto)
     {
         return new DowntimeType
         {
@@ -23,7 +23,7 @@ public static class ParserDTOToModel
             Name = dto.Name,
         };
     }
-    public static Employee ToModel(EmployeeDTO dto)
+    public static Employee ToModel(this EmployeeDTO dto)
     {
         return new Employee
         {
@@ -32,7 +32,7 @@ public static class ParserDTOToModel
             ShortName = dto.FullName.ToShortName()
         };
     }
-    public static EquipmentLine ToModel(EquipmentLineDTO dto)
+    public static EquipmentLine ToModel(this EquipmentLineDTO dto)
     {
         return new EquipmentLine
         {
@@ -41,7 +41,7 @@ public static class ParserDTOToModel
             IsActive = true
         };
     }
-    public static Product ToModel(ProductDTO dto)
+    public static Product ToModel(this ProductDTO dto)
     {
         return new Product
         {
@@ -53,7 +53,7 @@ public static class ParserDTOToModel
             ShortName = dto.Name
         };
     }
-    public static ProductionRecord ToModel(ProductionRecordDTO dto)
+    public static ProductionRecord ToModel(this ProductionRecordDTO dto)
     {
         return new ProductionRecord
         {
@@ -76,7 +76,7 @@ public static class ParserDTOToModel
 
 
     // Экспорт модели в DTO для отображения
-    public static DowntimeRecordDTO ToDTO(DowntimeRecord model)
+    public static DowntimeRecordDTO ToDTO(this DowntimeRecord model)
     {
         return new DowntimeRecordDTO
         {
@@ -85,7 +85,7 @@ public static class ParserDTOToModel
             ProductionRecordId = model.ProductionRecordId,
         };
     }
-    public static DowntimeTypeDTO ToDTO(DowntimeType model)
+    public static DowntimeTypeDTO ToDTO(this DowntimeType model)
     {
         return new DowntimeTypeDTO
         {
@@ -93,21 +93,21 @@ public static class ParserDTOToModel
             Name = model.Name,
         };
     }
-    public static EmployeeDTO ToDTO(Employee model)
+    public static EmployeeDTO ToDTO(this Employee model)
     {
         return new EmployeeDTO
         {
             FullName = model.FullName,
         };
     }
-    public static EquipmentLineDTO ToDTO(EquipmentLine model)
+    public static EquipmentLineDTO ToDTO(this EquipmentLine model)
     {
         return new EquipmentLineDTO
         {
             Name = model.Name,
         };
     }
-    public static ProductDTO ToDTO(Product model)
+    public static ProductDTO ToDTO(this Product model)
     {
         return new ProductDTO
         {
@@ -115,9 +115,10 @@ public static class ParserDTOToModel
             Form = model.Form,
             Name = model.Name,
             PackSize = model.PackSize,
+            Id = model.Id,
         };
     }
-    public static ProductionRecordDTO ToDTO(ProductionRecord model)
+    public static ProductionRecordDTO ToDTO(this ProductionRecord model)
     {
         return new ProductionRecordDTO
         {

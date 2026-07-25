@@ -37,7 +37,7 @@ namespace BinnoMetric.Controllers
             return await _productService.GetAllAsync();
         }
         [HttpGet("GetProduct")]
-        public async Task<ProductDTO> GetAsync(string id)
+        public async Task<ProductDTO> GetAsync(int id)
         {
             return await _productService.GetAsync(id);
         }
