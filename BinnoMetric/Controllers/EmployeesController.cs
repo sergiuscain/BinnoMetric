@@ -29,7 +29,7 @@ namespace BinnoMetric.Controllers
             throw new NotImplementedException();
         }
         [HttpPut("DeleteEmployee")]
-        public Task<bool> CanDeleteAsync(int employeeId)
+        public Task<bool> DeleteAsync(int employeeId)
         {
             throw new NotImplementedException();
         }

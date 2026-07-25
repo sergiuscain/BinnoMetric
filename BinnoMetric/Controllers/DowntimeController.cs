@@ -70,12 +70,12 @@ namespace BinnoMetric.Controllers
             throw new NotImplementedException();
         }
         [HttpDelete("DeleteDowntimeRecord")]
-        public Task<bool> CanDeleteAsync(DowntimeRecordDTO value)
+        public Task<bool> DeleteAsync(DowntimeRecordDTO value)
         {
             throw new NotImplementedException();
         }
         [HttpDelete("DeleteDowntimeType")]
-        public Task<bool> CanDeleteAsync(DowntimeTypeDTO value)
+        public Task<bool> DeleteAsync(DowntimeTypeDTO value)
         {
             throw new NotImplementedException();
         }

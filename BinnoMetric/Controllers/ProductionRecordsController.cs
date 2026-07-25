@@ -21,7 +21,7 @@ namespace BinnoMetric.Controllers
             throw new NotImplementedException();
         }
         [HttpDelete("DeleteProductionRecord")]
-        public Task<bool> CanDeleteAsync(ProductionRecordDTO value)
+        public Task<bool> DeleteAsync(ProductionRecordDTO value)
         {
             throw new NotImplementedException();
         }
