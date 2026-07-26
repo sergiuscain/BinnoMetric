@@ -1,5 +1,6 @@
 ﻿using BinnoMetric.Abstractions;
 using BinnoMetric.DTO;
+using BinnoMetric.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,34 +13,39 @@ public class DowntimeTypeController :
     ICanUpdate<DowntimeTypeDTO>, 
     ICanDelete<DowntimeTypeDTO>
 {
-    [HttpDelete("DeleteDowntimeType")]
-    public Task<bool> DeleteAsync(DowntimeTypeDTO value)
+    private readonly DowntimeTypeService _downtimeTypeService;
+    public DowntimeTypeController(DowntimeTypeService downtimeTypeService)
     {
-        throw new NotImplementedException();
+        _downtimeTypeService = downtimeTypeService;
+    }
+    [HttpDelete("DeleteDowntimeType")]
+    public async Task<bool> DeleteAsync(DowntimeTypeDTO value)
+    {
+        return await _downtimeTypeService.DeleteAsync(value);
     }
     [HttpPut("UpdateDowntimeType")]
-    public Task<DowntimeTypeDTO> UpdateAsync(DowntimeTypeDTO value)
+    public async Task<DowntimeTypeDTO> UpdateAsync(DowntimeTypeDTO value)
     {
-        throw new NotImplementedException();
+        return await _downtimeTypeService.UpdateAsync(value);
     }
     [HttpPost("AddDowntimeType")]
-    public Task<DowntimeTypeDTO> AddAsync(DowntimeTypeDTO value)
+    public async Task<DowntimeTypeDTO> AddAsync(DowntimeTypeDTO value)
     {
-        throw new NotImplementedException();
+        return await _downtimeTypeService.AddAsync(value);
     }
     [HttpPost("AddDowntimeTypes")]
-    public Task<ICollection<DowntimeTypeDTO>> AddRangeAsync(ICollection<DowntimeTypeDTO> values)
+    public async Task<ICollection<DowntimeTypeDTO>> AddRangeAsync(ICollection<DowntimeTypeDTO> values)
     {
-        throw new NotImplementedException();
+        return await _downtimeTypeService.AddRangeAsync(values);
     }
     [HttpGet("GetDowntimeType")]
-    public Task<DowntimeTypeDTO> GetAsync(int id)
+    public async Task<DowntimeTypeDTO> GetAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _downtimeTypeService.GetAsync(id);
     }
     [HttpGet("GetDowntimeTypes")]
-    public Task<ICollection<DowntimeTypeDTO>> GetAllAsync()
+    public async Task<ICollection<DowntimeTypeDTO>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        return await _downtimeTypeService.GetAllAsync();
     }
 }
