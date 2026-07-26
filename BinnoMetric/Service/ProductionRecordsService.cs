@@ -1,36 +1,93 @@
-﻿using BinnoMetric.DTO;
+﻿using BinnoMetric.DataBase;
+using BinnoMetric.DTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace BinnoMetric.Service;
 
 public class ProductionRecordsService
 {
+    private readonly BinnoDBContext _dBContext;
+    public ProductionRecordsService(BinnoDBContext dbContext)
+    {
+        _dBContext = dbContext;
+    }
     internal async Task<ProductionRecordDTO> AddAsync(ProductionRecordDTO value)
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _dBContext.ProductionRecords.AddAsync(value.ToModel());
+            await _dBContext.SaveChangesAsync();
+            return value;
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     internal async Task<ICollection<ProductionRecordDTO>> AddRangeAsync(ICollection<ProductionRecordDTO> values)
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _dBContext.ProductionRecords.AddRangeAsync(values.Select(x => x.ToModel()));
+            await _dBContext.SaveChangesAsync();
+            return values;
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     internal async Task<bool> DeleteAsync(ProductionRecordDTO value)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var productionRecord = await _dBContext.ProductionRecords.FirstOrDefaultAsync(x => x.Id == value.Id);
+            if (productionRecord is not null)
+            {
+                _dBContext.ProductionRecords.Remove(productionRecord);
+                await _dBContext.SaveChangesAsync();
+                return true;
+            }
+            return false;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     internal async Task<ICollection<ProductionRecordDTO>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        try
+        {
+            var productionRecords = await _dBContext.ProductionRecords.ToListAsync();
+            return productionRecords.Select(x => x.ToDTO()).ToList();
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     internal async Task<ProductionRecordDTO> GetAsync(int id)
     {
-        throw new NotImplementedException();
+        var productionRecord = await _dBContext.ProductionRecords.FirstOrDefaultAsync(x => x.Id == id);
+        return productionRecord == null ? null : productionRecord.ToDTO();
     }
 
     internal async Task<ProductionRecordDTO> UpdateAsync(ProductionRecordDTO value)
     {
-        throw new NotImplementedException();
+        try
+        {
+            _dBContext.ProductionRecords.Update(value.ToModel());
+            await _dBContext.SaveChangesAsync();
+            return value;
+        }
+        catch
+        {
+            return null;
+        }
     }
 }
