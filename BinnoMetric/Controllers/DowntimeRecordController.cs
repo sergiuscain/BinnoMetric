@@ -1,5 +1,6 @@
 ﻿using BinnoMetric.Abstractions;
 using BinnoMetric.DTO;
+using BinnoMetric.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BinnoMetric.Controllers
@@ -13,35 +14,41 @@ namespace BinnoMetric.Controllers
         ICanUpdate<DowntimeRecordDTO>, 
         ICanDelete<DowntimeRecordDTO>
     {
-        [HttpPost("AddDowntimeRecord")]
-        public Task<DowntimeRecordDTO> AddAsync(DowntimeRecordDTO value)
+        private readonly DowntimeRecordService _downtimeRecordService;
+        public DowntimeRecordController(DowntimeRecordService downtimeRecordService)
         {
-            throw new NotImplementedException();
+            _downtimeRecordService = downtimeRecordService;
+        }
+
+        [HttpPost("AddDowntimeRecord")]
+        public async Task<DowntimeRecordDTO> AddAsync(DowntimeRecordDTO value)
+        {
+            return await _downtimeRecordService.AddAsync(value);
         }
         [HttpPost("AddDowntimeRecords")]
-        public Task<ICollection<DowntimeRecordDTO>> AddRangeAsync(ICollection<DowntimeRecordDTO> values)
+        public async Task<ICollection<DowntimeRecordDTO>> AddRangeAsync(ICollection<DowntimeRecordDTO> values)
         {
-            throw new NotImplementedException();
+            return await _downtimeRecordService.AddRangeAsync(values);
         }
         [HttpGet("GetDowntimeRecord")]
-        public Task<DowntimeRecordDTO> GetAsync(int id)
+        public async Task<DowntimeRecordDTO> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _downtimeRecordService.GetAsync(id);
         }
         [HttpGet("GetDowntimeRecords")]
-        public Task<ICollection<DowntimeRecordDTO>> GetAllAsync()
+        public async Task<ICollection<DowntimeRecordDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _downtimeRecordService.GetAllAsync();
         }
         [HttpPut("UpdateDowntimeRecord")]
-        public Task<DowntimeRecordDTO> UpdateAsync(DowntimeRecordDTO value)
+        public async Task<DowntimeRecordDTO> UpdateAsync(DowntimeRecordDTO value)
         {
-            throw new NotImplementedException();
+            return await _downtimeRecordService.UpdateAsync(value);
         }
         [HttpDelete("DeleteDowntimeRecord")]
-        public Task<bool> DeleteAsync(DowntimeRecordDTO value)
+        public async Task<bool> DeleteAsync(DowntimeRecordDTO value)
         {
-            throw new NotImplementedException();
+            return await _downtimeRecordService.DeleteAsync(value);
         }
     }
 }
