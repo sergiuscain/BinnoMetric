@@ -1,6 +1,7 @@
 ﻿using BinnoMetric.Abstractions;
 using BinnoMetric.DataBase.Models;
 using BinnoMetric.DTO;
+using BinnoMetric.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,35 +11,41 @@ namespace BinnoMetric.Controllers
     [ApiController]
     public class ProductionRecordsController : ControllerBase, ICanAdd<ProductionRecordDTO>, ICanGet<ProductionRecordDTO>, ICanUpdate<ProductionRecordDTO>, ICanDelete<ProductionRecordDTO>
     {
-        [HttpPost("AddProductionRecord")]
-        public Task<ProductionRecordDTO> AddAsync(ProductionRecordDTO value)
+        private readonly ProductionRecordsService _productionRecordsService;
+        public ProductionRecordsController(ProductionRecordsService productionRecordsService)
         {
-            throw new NotImplementedException();
+            _productionRecordsService = productionRecordsService;
+        }
+
+        [HttpPost("AddProductionRecord")]
+        public async Task<ProductionRecordDTO> AddAsync(ProductionRecordDTO value)
+        {
+            return await _productionRecordsService.AddAsync(value);
         }
         [HttpPost("AddProductionRecords")]
-        public Task<ICollection<ProductionRecordDTO>> AddRangeAsync(ICollection<ProductionRecordDTO> values)
+        public async Task<ICollection<ProductionRecordDTO>> AddRangeAsync(ICollection<ProductionRecordDTO> values)
         {
-            throw new NotImplementedException();
+            return await _productionRecordsService.AddRangeAsync(values);
         }
         [HttpDelete("DeleteProductionRecord")]
-        public Task<bool> DeleteAsync(ProductionRecordDTO value)
+        public async Task<bool> DeleteAsync(ProductionRecordDTO value)
         {
-            throw new NotImplementedException();
+            return await _productionRecordsService.DeleteAsync(value);
         }
         [HttpGet("GetProductionRecords")]
-        public Task<ICollection<ProductionRecordDTO>> GetAllAsync()
+        public async Task<ICollection<ProductionRecordDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _productionRecordsService.GetAllAsync();
         }
         [HttpGet("GetProductionRecord")]
-        public Task<ProductionRecordDTO> GetAsync(int id)
+        public async Task<ProductionRecordDTO> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _productionRecordsService.GetAsync(id);
         }
         [HttpPut("UpdateProductionRecord")]
-        public Task<ProductionRecordDTO> UpdateAsync(ProductionRecordDTO value)
+        public async Task<ProductionRecordDTO> UpdateAsync(ProductionRecordDTO value)
         {
-            throw new NotImplementedException();
+            return await _productionRecordsService.UpdateAsync(value);
         }
     }
 }

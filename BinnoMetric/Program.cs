@@ -18,6 +18,7 @@ builder.Services.AddTransient<IntegrationService>();
 builder.Services.AddTransient<ProductService>();
 builder.Services.AddTransient<DowntimeTypeService>();
 builder.Services.AddTransient<DowntimeRecordService>();
+builder.Services.AddTransient<ProductionRecordsService>();
 
 var app = builder.Build();
 
