@@ -18,11 +18,11 @@ public class ImportResult
 
 public class IntegrationService
 {
-    private readonly BinnoDBContext _context;
+    private readonly BinnoDBContext _dbContext;
 
-    public IntegrationService(BinnoDBContext context)
+    public IntegrationService(BinnoDBContext dbContext)
     {
-        _context = context;
+        _dbContext = dbContext;
     }
 
     // === ШАГ 1: ИМПОРТ СОТРУДНИКОВ ===
@@ -60,7 +60,7 @@ public class IntegrationService
             }
         }
 
-        var existingEmployees = await _context.Employees
+        var existingEmployees = await _dbContext.Employees
             .Select(e => e.FullName)
             .ToHashSetAsync();
 
@@ -73,8 +73,8 @@ public class IntegrationService
             })
             .ToList();
 
-        await _context.Employees.AddRangeAsync(newEmployees);
-        await _context.SaveChangesAsync();
+        await _dbContext.Employees.AddRangeAsync(newEmployees);
+        await _dbContext.SaveChangesAsync();
 
         result.InsertedRows = newEmployees.Count;
         result.Message = $"Импортировано сотрудников: {newEmployees.Count}";
@@ -109,7 +109,7 @@ public class IntegrationService
             }
         }
 
-        var existingProducts = await _context.Products
+        var existingProducts = await _dbContext.Products
             .Select(p => p.Name)
             .ToHashSetAsync();
 
@@ -125,8 +125,8 @@ public class IntegrationService
             })
             .ToList();
 
-        await _context.Products.AddRangeAsync(newProducts);
-        await _context.SaveChangesAsync();
+        await _dbContext.Products.AddRangeAsync(newProducts);
+        await _dbContext.SaveChangesAsync();
 
         result.InsertedRows = newProducts.Count;
         result.Message = $"Импортировано продуктов: {newProducts.Count}";
@@ -161,7 +161,7 @@ public class IntegrationService
             }
         }
 
-        var existingLines = await _context.EquipmentLines
+        var existingLines = await _dbContext.EquipmentLines
             .Select(l => l.Name)
             .ToHashSetAsync();
 
@@ -174,8 +174,8 @@ public class IntegrationService
             })
             .ToList();
 
-        await _context.EquipmentLines.AddRangeAsync(newLines);
-        await _context.SaveChangesAsync();
+        await _dbContext.EquipmentLines.AddRangeAsync(newLines);
+        await _dbContext.SaveChangesAsync();
 
         result.InsertedRows = newLines.Count;
         result.Message = $"Импортировано линий: {newLines.Count}";
@@ -189,9 +189,9 @@ public class IntegrationService
         var result = new ImportResult();
 
         // Загружаем кэши
-        var products = await _context.Products.ToDictionaryAsync(p => p.Name, p => p.Id);
-        var employees = await _context.Employees.ToDictionaryAsync(e => e.FullName, e => e.Id);
-        var lines = await _context.EquipmentLines.ToDictionaryAsync(l => l.Name, l => l.Id);
+        var products = await _dbContext.Products.ToDictionaryAsync(p => p.Name, p => p.Id);
+        var employees = await _dbContext.Employees.ToDictionaryAsync(e => e.FullName, e => e.Id);
+        var lines = await _dbContext.EquipmentLines.ToDictionaryAsync(l => l.Name, l => l.Id);
 
         Console.WriteLine($"Загружено продуктов: {products.Count}");
         Console.WriteLine($"Загружено сотрудников: {employees.Count}");
@@ -227,7 +227,7 @@ public class IntegrationService
                 }
 
                 // Проверяем дубликаты
-                bool exists = await _context.ProductionRecords
+                bool exists = await _dbContext.ProductionRecords
                     .AnyAsync(p => p.StartTime.Date == record.StartTime.Date
                                 && p.SeriesNumber == record.SeriesNumber
                                 && p.ProductId == record.ProductId);
@@ -238,7 +238,7 @@ public class IntegrationService
                     continue;
                 }
 
-                await _context.ProductionRecords.AddAsync(record);
+                await _dbContext.ProductionRecords.AddAsync(record);
                 result.InsertedRows++;
             }
             catch (Exception ex)
@@ -248,7 +248,7 @@ public class IntegrationService
             }
         }
 
-        await _context.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync();
         result.Message = $"Импортировано записей: {result.InsertedRows}";
 
         return result;
