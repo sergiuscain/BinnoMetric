@@ -1,23 +1,17 @@
 ﻿using BinnoMetric.Abstractions;
-using BinnoMetric.DataBase.Models;
 using BinnoMetric.DTO;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BinnoMetric.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DowntimeController: 
+    public class DowntimeRecordController: 
         ControllerBase, 
         ICanAdd<DowntimeRecordDTO>, 
         ICanGet<DowntimeRecordDTO>, 
         ICanUpdate<DowntimeRecordDTO>, 
-        ICanDelete<DowntimeRecordDTO>, 
-        ICanAdd<DowntimeTypeDTO>, 
-        ICanGet<DowntimeTypeDTO>, 
-        ICanUpdate<DowntimeTypeDTO>, 
-        ICanDelete<DowntimeTypeDTO>
+        ICanDelete<DowntimeRecordDTO>
     {
         [HttpPost("AddDowntimeRecord")]
         public Task<DowntimeRecordDTO> AddAsync(DowntimeRecordDTO value)
@@ -26,16 +20,6 @@ namespace BinnoMetric.Controllers
         }
         [HttpPost("AddDowntimeRecords")]
         public Task<ICollection<DowntimeRecordDTO>> AddRangeAsync(ICollection<DowntimeRecordDTO> values)
-        {
-            throw new NotImplementedException();
-        }
-        [HttpPost("AddDowntimeType")]
-        public Task<DowntimeTypeDTO> AddAsync(DowntimeTypeDTO value)
-        {
-            throw new NotImplementedException();
-        }
-        [HttpPost("AddDowntimeTypes")]
-        public Task<ICollection<DowntimeTypeDTO>> AddRangeAsync(ICollection<DowntimeTypeDTO> values)
         {
             throw new NotImplementedException();
         }
@@ -49,33 +33,13 @@ namespace BinnoMetric.Controllers
         {
             throw new NotImplementedException();
         }
-        [HttpGet("GetDowntimeType")]
-        Task<DowntimeTypeDTO> ICanGet<DowntimeTypeDTO>.GetAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-        [HttpGet("GetDowntimeTypes")]
-        Task<ICollection<DowntimeTypeDTO>> ICanGet<DowntimeTypeDTO>.GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
         [HttpPut("UpdateDowntimeRecord")]
         public Task<DowntimeRecordDTO> UpdateAsync(DowntimeRecordDTO value)
         {
             throw new NotImplementedException();
         }
-        [HttpPut("UpdateDowntimeType")]
-        public Task<DowntimeTypeDTO> UpdateAsync(DowntimeTypeDTO value)
-        {
-            throw new NotImplementedException();
-        }
         [HttpDelete("DeleteDowntimeRecord")]
         public Task<bool> DeleteAsync(DowntimeRecordDTO value)
-        {
-            throw new NotImplementedException();
-        }
-        [HttpDelete("DeleteDowntimeType")]
-        public Task<bool> DeleteAsync(DowntimeTypeDTO value)
         {
             throw new NotImplementedException();
         }
