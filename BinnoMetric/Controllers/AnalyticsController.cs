@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BinnoMetric.DTO;
+using BinnoMetric.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BinnoMetric.Controllers
@@ -7,5 +8,16 @@ namespace BinnoMetric.Controllers
     [ApiController]
     public class AnalyticsController : ControllerBase
     {
+        private readonly AnalyticsService _analyticsService;
+        public AnalyticsController(AnalyticsService analyticsService)
+        {
+            _analyticsService = analyticsService;
+        }
+
+        [HttpGet("GetTopEmployee")]
+        public async Task<TopEmployeesForCurrentProductDTO> GetTopEmployees(int productId)
+        {
+            return await _analyticsService.GetTopEmployees(productId);
+        }
     }
 }
