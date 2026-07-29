@@ -15,9 +15,13 @@ namespace BinnoMetric.Controllers
         }
 
         [HttpGet("GetTopEmployee")]
-        public async Task<TopEmployeesForCurrentProductDTO> GetTopEmployees(int productId)
+        public async Task<TopEmployeesForCurrentProductDTO> GetTopEmployees(
+            int productId, 
+            int? minRecord = 0,
+            DateTime? startDate = null,
+            DateTime? endDate = null)
         {
-            return await _analyticsService.GetTopEmployees(productId);
+            return await _analyticsService.GetTopEmployees(productId, minRecord, startDate, endDate);
         }
     }
 }
