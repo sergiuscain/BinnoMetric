@@ -31,7 +31,6 @@ public static class ParserDTOToModel
         {
             FullName = dto.FullName,
             IsActive = true,
-            ShortName = dto.FullName.ToShortName(),
             Id = dto.Id,
         };
     }
@@ -39,7 +38,6 @@ public static class ParserDTOToModel
     {
         return new EquipmentLine
         {
-            Code = dto.Name,
             Name = dto.Name,
             IsActive = true,
             Id = dto.Id,
@@ -49,12 +47,8 @@ public static class ParserDTOToModel
     {
         return new Product
         {
-            Dosage = dto.Dosage,
-            Form = dto.Form,
             Name = dto.Name,
-            PackSize = dto.PackSize,
             IsActive = true,
-            ShortName = dto.Name,
             Id = dto.Id,
         };
     }
@@ -121,10 +115,7 @@ public static class ParserDTOToModel
     {
         return new ProductDTO
         {
-            Dosage = model.Dosage,
-            Form = model.Form,
             Name = model.Name,
-            PackSize = model.PackSize,
             Id = model.Id,
         };
     }

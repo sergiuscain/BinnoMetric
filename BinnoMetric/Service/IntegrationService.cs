@@ -68,8 +68,7 @@ public class IntegrationService
             .Where(e => !existingEmployees.Contains(e))
             .Select(name => new Employee
             {
-                FullName = name,
-                ShortName = ExtractEmployeeShortName(name)
+                FullName = name
             })
             .ToList();
 
@@ -117,11 +116,7 @@ public class IntegrationService
             .Where(p => !existingProducts.Contains(p))
             .Select(name => new Product
             {
-                Name = name,
-                ShortName = ExtractShortName(name),
-                Dosage = ExtractDosage(name),
-                Form = ExtractForm(name),
-                PackSize = ExtractPackSize(name)
+                Name = name
             })
             .ToList();
 
@@ -169,8 +164,7 @@ public class IntegrationService
             .Where(l => !existingLines.Contains(l))
             .Select(name => new EquipmentLine
             {
-                Name = name,
-                Code = ExtractLineCode(name)
+                Name = name
             })
             .ToList();
 

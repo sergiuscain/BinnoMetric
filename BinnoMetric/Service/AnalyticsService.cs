@@ -50,7 +50,7 @@ public class AnalyticsService
         var employeesStat = employees
             .Select(employee => new EmployeeStatDTO
             {
-                ShortName = employee.ShortName,
+                FullName = employee.FullName,
                 TotalProductsCount = currentProductRecordForPeriod
                     .Where(x => x.OperatorDId == employee.Id || x.OperatorNKLId == employee.Id)
                     .Sum(x => x.ActualQuantity),
