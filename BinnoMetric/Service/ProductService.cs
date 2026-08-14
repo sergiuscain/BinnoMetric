@@ -38,11 +38,11 @@ public class ProductService
         }
     }
 
-    internal async Task<bool> DeleteAsync(ProductDTO value)
+    internal async Task<bool> DeleteAsync(int id)
     {
         try
         {
-             var product = await _dbContext.Products.FirstOrDefaultAsync(x => x.Id == value.Id);
+             var product = await _dbContext.Products.FirstOrDefaultAsync(x => x.Id == id);
             _dbContext.Products.Remove(product);
             await _dbContext.SaveChangesAsync();
             return true;

@@ -20,6 +20,19 @@ builder.Services.AddTransient<DowntimeTypeService>();
 builder.Services.AddTransient<DowntimeRecordService>();
 builder.Services.AddTransient<ProductionRecordsService>();
 builder.Services.AddTransient<AnalyticsService>();
+builder.Services.AddCors(options =>
+
+// Настройка CORS 
+{
+    options.AddPolicy("AllowFrontend",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader()
+                  .AllowCredentials();
+        });
+});
 
 var app = builder.Build();
 
@@ -30,6 +43,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 
