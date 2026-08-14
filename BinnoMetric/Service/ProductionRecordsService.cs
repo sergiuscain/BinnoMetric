@@ -39,11 +39,11 @@ public class ProductionRecordsService
         }
     }
 
-    internal async Task<bool> DeleteAsync(ProductionRecordDTO value)
+    internal async Task<bool> DeleteAsync(int id)
     {
         try
         {
-            var productionRecord = await _dBContext.ProductionRecords.FirstOrDefaultAsync(x => x.Id == value.Id);
+            var productionRecord = await _dBContext.ProductionRecords.FirstOrDefaultAsync(x => x.Id == id);
             if (productionRecord is not null)
             {
                 _dBContext.ProductionRecords.Remove(productionRecord);

@@ -9,7 +9,7 @@ namespace BinnoMetric.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductionRecordsController : ControllerBase, ICanAdd<ProductionRecordDTO>, ICanGet<ProductionRecordDTO>, ICanUpdate<ProductionRecordDTO>, ICanDelete<ProductionRecordDTO>
+    public class ProductionRecordsController : ControllerBase, ICanAdd<ProductionRecordDTO>, ICanGet<ProductionRecordDTO>, ICanUpdate<ProductionRecordDTO>, ICanDelete<int>
     {
         private readonly ProductionRecordsService _productionRecordsService;
         public ProductionRecordsController(ProductionRecordsService productionRecordsService)
@@ -28,9 +28,9 @@ namespace BinnoMetric.Controllers
             return await _productionRecordsService.AddRangeAsync(values);
         }
         [HttpDelete("DeleteProductionRecord")]
-        public async Task<bool> DeleteAsync(ProductionRecordDTO value)
+        public async Task<bool> DeleteAsync(int id)
         {
-            return await _productionRecordsService.DeleteAsync(value);
+            return await _productionRecordsService.DeleteAsync(id);
         }
         [HttpGet("GetProductionRecords")]
         public async Task<ICollection<ProductionRecordDTO>> GetAllAsync()
