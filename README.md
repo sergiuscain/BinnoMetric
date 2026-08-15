@@ -1,2 +1,2 @@
 # BinnoMetric
-[фронт][https://github.com/sergiuscain/BinnoMetricMaui]
+(фронт)[https://github.com/sergiuscain/BinnoMetricMaui]
