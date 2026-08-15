@@ -1,5 +1,4 @@
-﻿using BinnoMetric.Abstractions;
-using BinnoMetric.DTO;
+﻿using BinnoMetric.DTO;
 using BinnoMetric.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,7 +6,7 @@ namespace BinnoMetric.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ProductionRecordsController : ControllerBase, ICanAdd<ProductionRecordDTO>, ICanGet<ProductionRecordDTO>, ICanUpdate<ProductionRecordDTO>, ICanDelete<int>
+public class ProductionRecordsController : ControllerBase
 {
     private readonly ProductionRecordsService _productionRecordsService;
     public ProductionRecordsController(ProductionRecordsService productionRecordsService)
@@ -31,9 +30,9 @@ public class ProductionRecordsController : ControllerBase, ICanAdd<ProductionRec
         return await _productionRecordsService.DeleteAsync(id);
     }
     [HttpGet("GetProductionRecords")]
-    public async Task<ICollection<ProductionRecordDTO>> GetAllAsync()
+    public async Task<ICollection<ProductionRecordDTO>> GetAllAsync(int page = 0, int pageSize = 50)
     {
-        return await _productionRecordsService.GetAllAsync();
+        return await _productionRecordsService.GetAllAsync(page, pageSize);
     }
     [HttpGet("GetProductionRecord")]
     public async Task<ProductionRecordDTO> GetAsync(int id)

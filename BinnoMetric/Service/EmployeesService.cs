@@ -1,6 +1,4 @@
-﻿using BinnoMetric.Abstractions;
-using BinnoMetric.DataBase;
-using BinnoMetric.DataBase.Models;
+﻿using BinnoMetric.DataBase;
 using BinnoMetric.DTO;
 using Microsoft.EntityFrameworkCore;
 

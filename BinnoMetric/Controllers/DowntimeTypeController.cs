@@ -1,16 +1,11 @@
-﻿using BinnoMetric.Abstractions;
-using BinnoMetric.DTO;
+﻿using BinnoMetric.DTO;
 using BinnoMetric.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BinnoMetric.Controllers;
 [Route("api/[controller]")]
 [ApiController]
-public class DowntimeTypeController : 
-    ControllerBase, ICanAdd<DowntimeTypeDTO>, 
-    ICanGet<DowntimeTypeDTO>, 
-    ICanUpdate<DowntimeTypeDTO>, 
-    ICanDelete<DowntimeTypeDTO>
+public class DowntimeTypeController : ControllerBase
 {
     private readonly DowntimeTypeService _downtimeTypeService;
     public DowntimeTypeController(DowntimeTypeService downtimeTypeService)
