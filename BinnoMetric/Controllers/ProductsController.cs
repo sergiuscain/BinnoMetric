@@ -1,5 +1,4 @@
-﻿using BinnoMetric.Abstractions;
-using BinnoMetric.DTO;
+﻿using BinnoMetric.DTO;
 using BinnoMetric.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,7 +6,7 @@ namespace BinnoMetric.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ProductsController : ControllerBase, ICanAdd<ProductDTO>, ICanGet<ProductDTO>, ICanUpdate<ProductDTO>, ICanDelete<int>
+public class ProductsController : ControllerBase
 {
     private ProductService _productService;
     public ProductsController(ProductService productService)

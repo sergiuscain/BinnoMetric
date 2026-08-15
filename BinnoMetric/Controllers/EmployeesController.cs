@@ -1,5 +1,4 @@
-﻿using BinnoMetric.Abstractions;
-using BinnoMetric.DTO;
+﻿using BinnoMetric.DTO;
 using BinnoMetric.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,7 +6,7 @@ namespace BinnoMetric.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class EmployeesController : ControllerBase, ICanAdd<EmployeeDTO>, ICanGet<EmployeeDTO>, ICanDelete<int>//, ICanUpdate<EmployeeDTO>
+public class EmployeesController : ControllerBase
 {
     private readonly EmployeesService _employeesService;
     public EmployeesController(EmployeesService employeesService)

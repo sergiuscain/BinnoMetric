@@ -58,11 +58,12 @@ public class ProductionRecordsService
         }
     }
 
-    internal async Task<ICollection<ProductionRecordDTO>> GetAllAsync()
+    internal async Task<ICollection<ProductionRecordDTO>> GetAllAsync(int page)
     {
+        int pageSize = 50;
         try
         {
-            var productionRecords = await _dBContext.ProductionRecords.ToListAsync();
+            var productionRecords = await _dBContext.ProductionRecords.Skip(page * pageSize).Take(pageSize).ToListAsync();
             return productionRecords.Select(x => x.ToDTO()).ToList();
         }
         catch
