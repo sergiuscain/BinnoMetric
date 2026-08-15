@@ -1,7 +1,6 @@
 ﻿using BinnoMetric.Abstractions;
 using BinnoMetric.DTO;
 using BinnoMetric.Service;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BinnoMetric.Controllers;

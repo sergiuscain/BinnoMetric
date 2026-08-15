@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace BinnoMetric.Controllers
+namespace BinnoMetric.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class ReportsController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ReportsController : ControllerBase
-    {
-    }
 }
