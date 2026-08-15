@@ -70,6 +70,11 @@ public class ProductionRecordsService
             return null;
         }
     }
+    internal async Task<int> GetPageCount(int pageSize)
+    {
+        var totalCount = await _dBContext.ProductionRecords.CountAsync();
+        return (totalCount + pageSize - 1) / pageSize;
+    }
 
     internal async Task<ProductionRecordDTO> GetAsync(int id)
     {
