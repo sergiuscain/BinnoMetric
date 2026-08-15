@@ -60,6 +60,7 @@ public class ProductionRecordsService
 
     internal async Task<ICollection<ProductionRecordDTO>> GetAllAsync(int page, int pageSize)
     {
+        int pageSize = 50;
         try
         {
             var productionRecords = await _dBContext.ProductionRecords.Skip(page * pageSize).Take(pageSize).ToListAsync();
