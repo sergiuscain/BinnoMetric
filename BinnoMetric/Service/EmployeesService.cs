@@ -36,7 +36,8 @@ public class EmployeesService
         try
         {
             var employee = await _context.Employees.FirstOrDefaultAsync(x => x.Id == id);
-            _context.Employees.Remove(employee);
+            employee.FullName = "Сотрудник удален";
+            employee.IsActive = false;
             await _context.SaveChangesAsync();
             return true;
         }
