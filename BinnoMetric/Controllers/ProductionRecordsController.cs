@@ -1,4 +1,5 @@
-﻿using BinnoMetric.DTO;
+﻿using BinnoMetric.DataBase.Models;
+using BinnoMetric.DTO;
 using BinnoMetric.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,9 +31,9 @@ public class ProductionRecordsController : ControllerBase
         return await _productionRecordsService.DeleteAsync(id);
     }
     [HttpGet("GetProductionRecords")]
-    public async Task<ICollection<ProductionRecordDTO>> GetAllAsync(int page = 0, int pageSize = 50)
+    public async Task<ICollection<ProductionRecordDTO>> GetAllAsync([FromQuery]ProductionRecordFilter filter)
     {
-        return await _productionRecordsService.GetAllAsync(page, pageSize);
+        return await _productionRecordsService.GetAllAsync(filter);
     }
     [HttpGet("GetProductionRecord")]
     public async Task<ProductionRecordDTO> GetAsync(int id)

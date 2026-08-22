@@ -1,4 +1,5 @@
 ﻿using BinnoMetric.DataBase;
+using BinnoMetric.DataBase.Models;
 using BinnoMetric.DTO;
 using Microsoft.EntityFrameworkCore;
 
@@ -58,11 +59,11 @@ public class ProductionRecordsService
         }
     }
 
-    internal async Task<ICollection<ProductionRecordDTO>> GetAllAsync(int page, int pageSize)
+    internal async Task<ICollection<ProductionRecordDTO>> GetAllAsync(ProductionRecordFilter filter)
     {
         try
         {
-            var productionRecords = await _dBContext.ProductionRecords.Skip(page * pageSize).Take(pageSize).ToListAsync();
+            var productionRecords = await _dBContext.ProductionRecords.Skip(filter.Page * filter.PageSize).Take(filter.PageSize).ToListAsync();
             return productionRecords.Select(x => x.ToDTO()).ToList();
         }
         catch
