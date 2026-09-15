@@ -41,9 +41,9 @@ public class ProductionRecordsController : ControllerBase
         return await _productionRecordsService.GetAsync(id);
     }
     [HttpGet("GetPageCount")]
-    public async Task<int> GetPageCount(int pageSize)
+    public async Task<int> GetPageCount([FromQuery] ProductionRecordFilter filter)
     {
-        return await _productionRecordsService.GetPageCount(pageSize);
+        return await _productionRecordsService.GetPageCount(filter);
     }
     [HttpPut("UpdateProductionRecord")]
     public async Task<ProductionRecordDTO> UpdateAsync(ProductionRecordDTO value)

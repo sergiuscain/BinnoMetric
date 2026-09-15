@@ -120,10 +120,12 @@ public class ProductionRecordsService
         return filtredProductionRecords;
     }
 
-    internal async Task<int> GetPageCount(int pageSize)
+    internal async Task<int> GetPageCount(ProductionRecordFilter filter)
     {
-        var totalCount = await _dBContext.ProductionRecords.CountAsync();
-        return (totalCount + pageSize - 1) / pageSize;
+        var totalCount = (await GetAllAsync(filter)).Count;
+        if (filter.PageSize.HasValue && filter.PageSize != 0)
+            return (totalCount + filter.PageSize.Value - 1) / filter.PageSize.Value;
+        return 0;
     }
 
     internal async Task<ProductionRecordDTO> GetAsync(int id)
