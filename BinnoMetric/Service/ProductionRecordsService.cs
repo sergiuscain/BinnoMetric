@@ -113,7 +113,7 @@ public class ProductionRecordsService
         {
             filtredProductionRecords = filtredProductionRecords.Where(x => x.Comments.Contains(filter.Comments)).ToList();
         }
-        if (filter.Page  != null && filter.PageSize != null)
+        if (filter.Page != null && filter.PageSize != null && filter.isPaginate == true)
         {
             filtredProductionRecords = filtredProductionRecords.Skip(filter.Page.Value * filter.PageSize.Value).Take(filter.PageSize.Value).ToList();
         }

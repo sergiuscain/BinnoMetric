@@ -40,9 +40,10 @@ public class ProductionRecordsController : ControllerBase
     {
         return await _productionRecordsService.GetAsync(id);
     }
-    [HttpGet("GetPageCount")]
-    public async Task<int> GetPageCount([FromQuery] ProductionRecordFilter filter)
+    [HttpPost("GetPageCount")]
+    public async Task<int> GetPageCount([FromBody] ProductionRecordFilter filter)
     {
+        filter.isPaginate = false;
         return await _productionRecordsService.GetPageCount(filter);
     }
     [HttpPut("UpdateProductionRecord")]

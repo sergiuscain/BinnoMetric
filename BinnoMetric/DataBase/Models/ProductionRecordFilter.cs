@@ -12,4 +12,5 @@ public class ProductionRecordFilter
     public string? SeriesNumber { get; set; }
     public int? ActualQuantity { get; set; }
     public string? Comments { get; set; }
+    public bool isPaginate { get; set; } = true;
 }
