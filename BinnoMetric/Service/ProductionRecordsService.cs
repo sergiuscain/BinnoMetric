@@ -111,7 +111,7 @@ public class ProductionRecordsService
         }
         if (filter.Comments != null)
         {
-            filtredProductionRecords = filtredProductionRecords.Where(x => x.Comments.Contains(filter.Comments)).ToList();
+            filtredProductionRecords = filtredProductionRecords.Where(x => x.Comments.ToLower().Contains(filter.Comments.ToLower())).ToList();
         }
         if (filter.Page != null && filter.PageSize != null && filter.isPaginate == true)
         {
