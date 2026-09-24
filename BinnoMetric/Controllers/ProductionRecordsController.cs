@@ -30,8 +30,8 @@ public class ProductionRecordsController : ControllerBase
     {
         return await _productionRecordsService.DeleteAsync(id);
     }
-    [HttpGet("GetProductionRecords")]
-    public async Task<ICollection<ProductionRecordDTO>> GetAllAsync([FromQuery]ProductionRecordFilter filter)
+    [HttpPost("GetProductionRecords")]
+    public async Task<ICollection<ProductionRecordDTO>> GetAllAsync([FromBody] ProductionRecordFilter filter)
     {
         return await _productionRecordsService.GetAllAsync(filter);
     }
