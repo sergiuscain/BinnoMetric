@@ -1,6 +1,7 @@
 ﻿using BinnoMetric.DTO;
 using BinnoMetric.Service;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace BinnoMetric.Controllers;
 
@@ -16,11 +17,21 @@ public class AnalyticsController : ControllerBase
 
     [HttpGet("GetTopEmployee")]
     public async Task<TopEmployeesForCurrentProductDTO> GetTopEmployees(
-        int productId, 
-        int? minRecord = 0,
-        DateTime? startDate = null,
-        DateTime? endDate = null)
+    int productId,
+    int? minRecord = 0,
+    string? startDate = null,
+    string? endDate = null)
     {
-        return await _analyticsService.GetTopEmployees(productId, minRecord, startDate, endDate);
+        var ru = new CultureInfo("ru-RU");
+
+        DateTime? start = string.IsNullOrWhiteSpace(startDate)
+            ? null
+            : DateTime.Parse(startDate, ru);
+
+        DateTime? end = string.IsNullOrWhiteSpace(endDate)
+            ? null
+            : DateTime.Parse(endDate, ru).AddDays(1).AddTicks(-1);
+
+        return await _analyticsService.GetTopEmployees(productId, minRecord, start, end);
     }
 }
