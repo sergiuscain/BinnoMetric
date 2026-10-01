@@ -14,10 +14,17 @@ public class EquipmentLineController : Controller
     {
         _equipmentLineService = equipmentLineService;
     }
-    [HttpGet("GetLine")]
-    public async Task<List<EquipmentLine>> GetLinesAsync()
+    [HttpGet("GetLines")]
+    public async Task<ActionResult<List<EquipmentLine>>> GetLinesAsync()
     {
         return await _equipmentLineService.GetLinesAsync();
+    }
+    [HttpGet("GetLine")]
+    public async Task<ActionResult<EquipmentLine>> GetLineAsync(int id)
+    {
+        var line = await _equipmentLineService.GetLineAsync(id);
+
+        return line != null ? line : NotFound();
     }
 
 }

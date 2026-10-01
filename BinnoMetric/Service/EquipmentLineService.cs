@@ -17,4 +17,10 @@ public class EquipmentLineService
         var lines = await _dbContext.EquipmentLines.ToListAsync();
         return lines;
     }
+
+    public async Task<EquipmentLine> GetLineAsync(int id)
+    {
+        var line = await _dbContext.EquipmentLines.FindAsync(id);
+        return line;
+    }
 }
