@@ -20,6 +20,7 @@ builder.Services.AddTransient<DowntimeTypeService>();
 builder.Services.AddTransient<DowntimeRecordService>();
 builder.Services.AddTransient<ProductionRecordsService>();
 builder.Services.AddTransient<AnalyticsService>();
+builder.Services.AddTransient<EquipmentLineService>();
 builder.Services.AddCors(options =>
 
 // Настройка CORS 
