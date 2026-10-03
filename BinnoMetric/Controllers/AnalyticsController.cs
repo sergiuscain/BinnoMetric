@@ -14,7 +14,15 @@ public class AnalyticsController : ControllerBase
     {
         _analyticsService = analyticsService;
     }
-
+    /// <summary>
+    /// Рассчитывает топ сотрудников по производительности за смену на конкретном продукте
+    /// </summary>
+    /// <param name="productId">Id продукта</param>
+    /// <param name="minRecord">Минимальное количество записей для учёта в статистике. 
+    /// Если у сотрудника записей меньше, чем minRecord, в топе он не отобразиться</param>
+    /// <param name="startDate">В статистике будут учитываться только записи начиная с даты startDate (включая эту дату)</param>
+    /// <param name="endDate">В статистике будут учитываться только записи заканчивающиеся не позже даты endDate (включая эту дату)</param>
+    /// <returns></returns>
     [HttpGet("GetTopEmployee")]
     public async Task<TopEmployeesForCurrentProductDTO> GetTopEmployees(
     int productId,
