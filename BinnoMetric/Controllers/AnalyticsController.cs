@@ -22,7 +22,9 @@ public class AnalyticsController : ControllerBase
     /// Если у сотрудника записей меньше, чем minRecord, в топе он не отобразиться</param>
     /// <param name="startDate">В статистике будут учитываться только записи начиная с даты startDate (включая эту дату)</param>
     /// <param name="endDate">В статистике будут учитываться только записи заканчивающиеся не позже даты endDate (включая эту дату)</param>
-    /// <returns></returns>
+    /// <returns>Возвращает модель данных, которая содержит наименование продукта, его Id
+    /// и коллекцию записей статистики для каждого сотрудника, которые содержат Имя, количество смен, 
+    /// сколько всего выпущено продукции этим сотрудником и среднее количество продукции за смену</returns>
     [HttpGet("GetTopEmployee")]
     public async Task<TopEmployeesForCurrentProductDTO> GetTopEmployees(
     int productId,
