@@ -1,4 +1,5 @@
 ﻿namespace BinnoMetric.DTO;
+
 public class ProductDTO
 {
     public int Id { get; set; }

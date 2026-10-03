@@ -1,4 +1,5 @@
 ﻿namespace BinnoMetric.DataBase.Models;
+
 public class EquipmentLine
 {
     public int Id { get; set; }

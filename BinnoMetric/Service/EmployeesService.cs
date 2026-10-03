@@ -3,6 +3,7 @@ using BinnoMetric.DTO;
 using Microsoft.EntityFrameworkCore;
 
 namespace BinnoMetric.Service;
+
 public class EmployeesService
 {
     private readonly BinnoDBContext _context;

@@ -42,7 +42,7 @@ public class ProductService
     {
         try
         {
-             var product = await _dbContext.Products.FirstOrDefaultAsync(x => x.Id == id);
+            var product = await _dbContext.Products.FirstOrDefaultAsync(x => x.Id == id);
             _dbContext.Products.Remove(product);
             await _dbContext.SaveChangesAsync();
             return true;
@@ -57,9 +57,9 @@ public class ProductService
     {
         try
         {
-             var products = await _dbContext.Products.ToListAsync();
-             var productsDto = products.Select(x => x.ToDTO()).ToList();
-             return productsDto;
+            var products = await _dbContext.Products.ToListAsync();
+            var productsDto = products.Select(x => x.ToDTO()).ToList();
+            return productsDto;
         }
         catch
         {

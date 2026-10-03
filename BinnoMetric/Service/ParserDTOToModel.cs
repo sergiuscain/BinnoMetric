@@ -2,6 +2,7 @@
 using BinnoMetric.DTO;
 
 namespace BinnoMetric.Service;
+
 public static class ParserDTOToModel
 {
     // Экспорт DTO в модель
@@ -58,7 +59,7 @@ public static class ParserDTOToModel
         {
             ActualQuantity = dto.ActualQuantity,
             Comments = dto.Comments,
-            Downtimes = new List<DowntimeRecord>(),
+            Downtimes = [],
             EquipmentLineId = dto.EquipmentLineId,
             CreatedAt = DateTime.Now,
             StartTime = dto.StartTime,

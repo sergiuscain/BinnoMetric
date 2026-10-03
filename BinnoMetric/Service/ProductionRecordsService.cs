@@ -95,10 +95,10 @@ public class ProductionRecordsService
         if (filter.EmployeeId != null)
         {
             filtredProductionRecords = filtredProductionRecords
-                .Where(x => x.OperatorDId == filter.EmployeeId 
-                    || x.OperatorNKLId == filter.EmployeeId 
-                    || x.SeniorOperatorId == filter.EmployeeId 
-                    || x.PackerId == filter.EmployeeId )
+                .Where(x => x.OperatorDId == filter.EmployeeId
+                    || x.OperatorNKLId == filter.EmployeeId
+                    || x.SeniorOperatorId == filter.EmployeeId
+                    || x.PackerId == filter.EmployeeId)
                 .ToList();
         }
         if (filter.StartTime != DateTime.MinValue)

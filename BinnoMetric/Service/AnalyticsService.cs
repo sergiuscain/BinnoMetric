@@ -33,10 +33,12 @@ public class AnalyticsService
         var product = await _dBContext.Products
             .FirstOrDefaultAsync(x => x.Id == productId);
 
-        TopEmployeesForCurrentProductDTO stat = new TopEmployeesForCurrentProductDTO();
-        stat.ProductId = productId;
-        stat.ProductName = product?.Name ?? "Неизвестный продукт";
-        stat.EmployeesStat = new List<EmployeeStatDTO>();
+        TopEmployeesForCurrentProductDTO stat = new TopEmployeesForCurrentProductDTO
+        {
+            ProductId = productId,
+            ProductName = product?.Name ?? "Неизвестный продукт",
+            EmployeesStat = []
+        };
 
         var allOperatorIds = currentProductRecordForPeriod
             .SelectMany(r => new[] { r.OperatorDId, r.OperatorNKLId })
@@ -66,7 +68,7 @@ public class AnalyticsService
                 return stat;
             })
             .ToList();
-        if(minRecord > 0)
+        if (minRecord > 0)
         {
             stat.EmployeesStat = employeesStat
                 .Where(x => x.ShiftsCount >= minRecord)

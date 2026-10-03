@@ -1,5 +1,4 @@
 ﻿using BinnoMetric.DataBase.Models;
-using BinnoMetric.DTO;
 using BinnoMetric.Service;
 using Microsoft.AspNetCore.Mvc;
 

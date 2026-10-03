@@ -6,8 +6,8 @@ namespace BinnoMetric.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class DowntimeRecordController: ControllerBase
-    
+public class DowntimeRecordController : ControllerBase
+
 {
     private readonly DowntimeRecordService _downtimeRecordService;
     public DowntimeRecordController(DowntimeRecordService downtimeRecordService)

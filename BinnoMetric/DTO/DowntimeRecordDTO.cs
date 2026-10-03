@@ -1,4 +1,5 @@
 ﻿namespace BinnoMetric.DTO;
+
 public class DowntimeRecordDTO
 {
     public int Id { get; set; }

@@ -1,4 +1,5 @@
 ﻿namespace BinnoMetric.DTO;
+
 public class ProductionRecordDTO
 {
     public int Id { get; set; }

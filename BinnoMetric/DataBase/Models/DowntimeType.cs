@@ -1,4 +1,5 @@
 ﻿namespace BinnoMetric.DataBase.Models;
+
 public class DowntimeType
 {
     public int Id { get; set; }

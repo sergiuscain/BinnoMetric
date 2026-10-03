@@ -1,4 +1,5 @@
 ﻿namespace BinnoMetric.DTO;
+
 public class EmployeeStatDTO
 {
     public string FullName { get; set; }
