@@ -4,6 +4,8 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>C:\Users\sergi\source\repos\BinnoMetric\BinnoMetric\Doc\BinnoMetricDoc.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

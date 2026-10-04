@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BinnoMetric</name>
+    </assembly>
+    <members>
+        <member name="M:BinnoMetric.Controllers.AnalyticsController.GetTopEmployees(System.Int32,System.Nullable{System.Int32},System.String,System.String)">
+            <summary>
+            Рассчитывает топ сотрудников по производительности за смену на конкретном продукте
+            </summary>
+            <param name="productId">Id продукта</param>
+            <param name="minRecord">Минимальное количество записей для учёта в статистике. 
+            Если у сотрудника записей меньше, чем minRecord, в топе он не отобразиться</param>
+            <param name="startDate">В статистике будут учитываться только записи начиная с даты startDate (включая эту дату)</param>
+            <param name="endDate">В статистике будут учитываться только записи заканчивающиеся не позже даты endDate (включая эту дату)</param>
+            <returns>Возвращает модель данных, которая содержит наименование продукта, его Id
+            и коллекцию записей статистики для каждого сотрудника, которые содержат Имя, количество смен, 
+            сколько всего выпущено продукции этим сотрудником и среднее количество продукции за смену</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.DowntimeRecordController.AddAsync(BinnoMetric.DTO.DowntimeRecordDTO)">
+            <summary>
+            Создает запись простоя линии
+            </summary>
+            <param name="value">Модель данных простоя</param>
+            <returns>Возвращает добавленную запись</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.DowntimeRecordController.AddRangeAsync(System.Collections.Generic.ICollection{BinnoMetric.DTO.DowntimeRecordDTO})">
+            <summary>
+            Создает список записей простоя
+            </summary>
+            <param name="values">Коллекция записей простоя</param>
+            <returns>Возвращает добавленную коллекцию записей</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.DowntimeRecordController.GetAsync(System.Int32)">
+            <summary>
+            Получает запись простоя по его Id
+            </summary>
+            <param name="id">Id записи простоя, целочисленное значение</param>
+            <returns>Возвращает запись простоя</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.DowntimeRecordController.GetAllAsync">
+            <summary>
+            Получает все записи простоя
+            </summary>
+            <returns>Возвращает коллекцию записей простоя</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.DowntimeRecordController.UpdateAsync(BinnoMetric.DTO.DowntimeRecordDTO)">
+            <summary>
+            Обновляет запись простоя
+            </summary>
+            <param name="value">Модель записи простоя с новыми данными, но тем же Id, что был раньше</param>
+            <returns>Возвращает обновленную запись</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.DowntimeRecordController.DeleteAsync(BinnoMetric.DTO.DowntimeRecordDTO)">
+            <summary>
+            Удаляет запись простоя
+            </summary>
+            <param name="value"></param>
+            <returns>Возвращает True в случае успеха</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.DowntimeTypeController.DeleteAsync(System.Int32)">
+            <summary>
+            Удаляет запись "тип простоя" по Id
+            </summary>
+            <param name="id">Id типа простоя</param>
+            <returns>В случае успеха, возвращает true</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.DowntimeTypeController.UpdateAsync(BinnoMetric.DTO.DowntimeTypeDTO)">
+            <summary>
+            Обновляет тип простоя
+            </summary>
+            <param name="value">Тип простоя с измененными данными. Id должен соответствовать тому типу простоя, который требуется обновить</param>
+            <returns>Обновленный тип простоя или null</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.DowntimeTypeController.AddAsync(BinnoMetric.DTO.DowntimeTypeDTO)">
+            <summary>
+            Добавляет тип простоя
+            </summary>
+            <param name="value">Модель содержащая тип простоя (механическая поломка, генеральная уборка, ежедневная уборка и прочие ТИПЫ простоев)</param>
+            <returns>Возвращает добавленную модель или null</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.DowntimeTypeController.AddRangeAsync(System.Collections.Generic.ICollection{BinnoMetric.DTO.DowntimeTypeDTO})">
+            <summary>
+            Добавляет коллекцию типов простоев
+            </summary>
+            <param name="values">Коллекция типов простоя</param>
+            <returns>Возвращает добавленную коллекцию или null</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.DowntimeTypeController.GetAsync(System.Int32)">
+            <summary>
+            Получает тип простоя по его Id
+            </summary>
+            <param name="id">Id простоя, целочисленное значение</param>
+            <returns>Тип простоя или null</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.DowntimeTypeController.GetAllAsync">
+            <summary>
+            Получает все типы простоев
+            </summary>
+            <returns>Коллекция типов простоя</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.EmployeesController.AddAsync(BinnoMetric.DTO.EmployeeDTO)">
+            <summary>
+            Добавляет сотрудника
+            </summary>
+            <param name="employee">Модель сотрудника</param>
+            <returns>Добавленная модель или null</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.EmployeesController.AddRangeAsync(System.Collections.Generic.ICollection{BinnoMetric.DTO.EmployeeDTO})">
+            <summary>
+            Добавляет коллекцию сотрудников
+            </summary>
+            <param name="values">Коллекция сотрудников</param>
+            <returns>Добавленная коллекция сотрудников или null</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.EmployeesController.DeleteAsync(System.Int32)">
+            <summary>
+            Удаляет сотрудника по Id
+            </summary>
+            <param name="id">Id сотрудника</param>
+            <returns>True в случае успеха</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.EmployeesController.GetAllAsync">
+            <summary>
+            Возвращает всех сотрудников
+            </summary>
+            <returns>Возвращает коллекцию сотрудников или null</returns>
+        </member>
+        <member name="M:BinnoMetric.Controllers.EmployeesController.GetAsync(System.Int32)">
+            <summary>
+            Получает сотрудника по Id
+            </summary>
+            <param name="id">Id сотрудника</param>
+            <returns>Сотрудник или null</returns>
+        </member>
+        <member name="T:Program">
+            <summary>
+            Auto-generated public partial Program class for top-level statement apps.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type)">
+            <summary>
+            Generates a documentation comment ID for a type.
+            Example: T:Namespace.Outer+Inner`1 becomes T:Namespace.Outer.Inner`1
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.PropertyInfo)">
+            <summary>
+            Generates a documentation comment ID for a property.
+            Example: P:Namespace.ContainingType.PropertyName or for an indexer P:Namespace.ContainingType.Item(System.Int32)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type,System.String)">
+            <summary>
+            Generates a documentation comment ID for a property given its container type and property name.
+            Example: P:Namespace.ContainingType.PropertyName
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.MethodInfo)">
+            <summary>
+            Generates a documentation comment ID for a method (or constructor).
+            For example:
+              M:Namespace.ContainingType.MethodName(ParamType1,ParamType2)~ReturnType
+              M:Namespace.ContainingType.#ctor(ParamType)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.GetTypeDocId(System.Type,System.Boolean,System.Boolean)">
+            <summary>
+            Generates a documentation ID string for a type.
+            This method handles nested types (replacing '+' with '.'),
+            generic types, arrays, pointers, by-ref types, and generic parameters.
+            The <paramref name="includeGenericArguments"/> flag controls whether
+            constructed generic type arguments are emitted, while <paramref name="omitGenericArity"/>
+            controls whether the generic arity marker (e.g. "`1") is appended.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.NormalizeDocId(System.String)">
+            <summary>
+            Normalizes a documentation comment ID to match the compiler-style format.
+            Strips the return type suffix for ordinary methods but retains it for conversion operators.
+            </summary>
+            <param name="docId">The documentation comment ID to normalize.</param>
+            <returns>The normalized documentation comment ID.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,6 +1,7 @@
 using BinnoMetric.DataBase;
 using BinnoMetric.Service;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,20 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(
+    options =>
+    {
+        var basePath = AppContext.BaseDirectory;
+        var xmlPath = Path.Combine(basePath, "BinnoMetricDoc.xml");
+        options.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
+        options.SwaggerDoc("v1", new OpenApiInfo
+        {
+            Version = "v1",
+            Title = "BimmoMetric",
+            Description = "ASP.NET Core Web API для учёта фармацевтического производства"
+        });
+    }
+);
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<BinnoDBContext>(options => options.UseSqlServer(connectionString));
 
