@@ -14,14 +14,14 @@ public class DowntimeTypeController : ControllerBase
         _downtimeTypeService = downtimeTypeService;
     }
     /// <summary>
-    /// Удаляет запись "тип простоя"
+    /// Удаляет запись "тип простоя" по Id
     /// </summary>
-    /// <param name="value"></param>
-    /// <returns></returns>
-    [HttpDelete("DeleteDowntimeType")]
-    public async Task<bool> DeleteAsync(DowntimeTypeDTO value)
+    /// <param name="id">Id типа простоя</param>
+    /// <returns>В случае успеха, возвращает true</returns>
+    [HttpDelete("Delete")]
+    public async Task<bool> DeleteAsync(int id)
     {
-        return await _downtimeTypeService.DeleteAsync(value);
+        return await _downtimeTypeService.DeleteAsync(id);
     }
     /// <summary>
     /// Обновляет тип простоя

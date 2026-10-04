@@ -40,12 +40,12 @@ public class DowntimeTypeService
         }
     }
 
-    internal async Task<bool> DeleteAsync(DowntimeTypeDTO value)
+    internal async Task<bool> DeleteAsync(int id)
     {
         try
         {
             var downtimeType = await _dbContext.DowntimeTypes.
-                FirstOrDefaultAsync(x => x.Id == value.Id);
+                FirstOrDefaultAsync(x => x.Id == id);
             if (downtimeType is not null)
             {
                 _dbContext.DowntimeTypes.Remove(downtimeType);
