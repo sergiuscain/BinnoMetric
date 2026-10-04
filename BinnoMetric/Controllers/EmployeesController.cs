@@ -13,28 +13,28 @@ public class EmployeesController : ControllerBase
     {
         _employeesService = employeesService;
     }
-    [HttpPost("AddEmployee")]
+    [HttpPost("Add")]
     public async Task<EmployeeDTO> AddAsync(EmployeeDTO employee)
     {
         return await _employeesService.AddAsync(employee);
     }
 
-    [HttpPost("AddEmployees")]
+    [HttpPost("AddCollection")]
     public async Task<ICollection<EmployeeDTO>> AddRangeAsync(ICollection<EmployeeDTO> values)
     {
         return await _employeesService.AddRangeAsync(values);
     }
-    [HttpPut("DeleteEmployee")]
+    [HttpPut("Delete")]
     public async Task<bool> DeleteAsync(int id)
     {
         return await _employeesService.DeleteAsync(id);
     }
-    [HttpGet("GetEmployees")]
+    [HttpGet("GetAll")]
     public async Task<ICollection<EmployeeDTO>> GetAllAsync()
     {
         return await _employeesService.GetAllAsync();
     }
-    [HttpGet("GetEmployee")]
+    [HttpGet("Get")]
     public async Task<EmployeeDTO> GetAsync(int id)
     {
         return await _employeesService.GetAsync(id);
