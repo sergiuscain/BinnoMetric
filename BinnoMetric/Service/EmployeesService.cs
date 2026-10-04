@@ -27,9 +27,16 @@ public class EmployeesService
 
     internal async Task<ICollection<EmployeeDTO>> AddRangeAsync(ICollection<EmployeeDTO> values)
     {
-        await _context.Employees.AddRangeAsync(values.Select(x => x.ToModel()));
-        await _context.SaveChangesAsync();
-        return values;
+        try
+        {
+            await _context.Employees.AddRangeAsync(values.Select(x => x.ToModel()));
+            await _context.SaveChangesAsync();
+            return values;
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     internal async Task<bool> DeleteAsync(int id)
