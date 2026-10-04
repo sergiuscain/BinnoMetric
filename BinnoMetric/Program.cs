@@ -19,7 +19,7 @@ builder.Services.AddSwaggerGen(
         options.SwaggerDoc("v1", new OpenApiInfo
         {
             Version = "v1",
-            Title = "BimmoMetric",
+            Title = "BinnoMetric",
             Description = "ASP.NET Core Web API для учёта фармацевтического производства"
         });
     }
