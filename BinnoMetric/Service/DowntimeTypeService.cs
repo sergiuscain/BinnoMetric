@@ -78,7 +78,7 @@ public class DowntimeTypeService
         {
             _dbContext.DowntimeTypes.Update(value.ToModel());
             await _dbContext.SaveChangesAsync();
-            return (await _dbContext.DowntimeTypes.FirstOrDefaultAsync(x => x.Id == value.Id)).ToDTO();
+            return value;
         }
         catch
         {
