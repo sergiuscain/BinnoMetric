@@ -26,9 +26,9 @@ public class DowntimeTypeController : ControllerBase
     /// <summary>
     /// Обновляет тип простоя
     /// </summary>
-    /// <param name="value"></param>
-    /// <returns></returns>
-    [HttpPut("UpdateDowntimeType")]
+    /// <param name="value">Тип простоя с измененными данными. Id должен соответствовать тому типу простоя, который требуется обновить</param>
+    /// <returns>Обновленный тип простоя или null</returns>
+    [HttpPut("Update")]
     public async Task<DowntimeTypeDTO> UpdateAsync(DowntimeTypeDTO value)
     {
         return await _downtimeTypeService.UpdateAsync(value);
@@ -37,8 +37,8 @@ public class DowntimeTypeController : ControllerBase
     /// Добавляет тип простоя
     /// </summary>
     /// <param name="value">Модель содержащая тип простоя (механическая поломка, генеральная уборка, ежедневная уборка и прочие ТИПЫ простоев)</param>
-    /// <returns></returns>
-    [HttpPost("AddDowntimeType")]
+    /// <returns>Возвращает добавленную модель или null</returns>
+    [HttpPost("Add")]
     public async Task<DowntimeTypeDTO> AddAsync(DowntimeTypeDTO value)
     {
         return await _downtimeTypeService.AddAsync(value);
@@ -46,9 +46,9 @@ public class DowntimeTypeController : ControllerBase
     /// <summary>
     /// Добавляет коллекцию типов простоев
     /// </summary>
-    /// <param name="values"></param>
-    /// <returns></returns>
-    [HttpPost("AddDowntimeTypes")]
+    /// <param name="values">Коллекция типов простоя</param>
+    /// <returns>Возвращает добавленную коллекцию или null</returns>
+    [HttpPost("AddCollection")]
     public async Task<ICollection<DowntimeTypeDTO>> AddRangeAsync(ICollection<DowntimeTypeDTO> values)
     {
         return await _downtimeTypeService.AddRangeAsync(values);
@@ -57,8 +57,8 @@ public class DowntimeTypeController : ControllerBase
     /// Получает тип простоя по его Id
     /// </summary>
     /// <param name="id">Id простоя, целочисленное значение</param>
-    /// <returns></returns>
-    [HttpGet("GetDowntimeType")]
+    /// <returns>Тип простоя или null</returns>
+    [HttpGet("Get")]
     public async Task<DowntimeTypeDTO> GetAsync(int id)
     {
         return await _downtimeTypeService.GetAsync(id);
@@ -66,8 +66,8 @@ public class DowntimeTypeController : ControllerBase
     /// <summary>
     /// Получает все типы простоев
     /// </summary>
-    /// <returns></returns>
-    [HttpGet("GetDowntimeTypes")]
+    /// <returns>Коллекция типов простоя</returns>
+    [HttpGet("GetAll")]
     public async Task<ICollection<DowntimeTypeDTO>> GetAllAsync()
     {
         return await _downtimeTypeService.GetAllAsync();
