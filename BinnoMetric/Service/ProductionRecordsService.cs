@@ -36,7 +36,7 @@ public class ProductionRecordsService
         }
         catch
         {
-            return null;
+            return new List<ProductionRecordDTO>();
         }
     }
 
@@ -69,7 +69,7 @@ public class ProductionRecordsService
         }
         catch
         {
-            return null;
+            return new List<ProductionRecordDTO>();
         }
     }
 
