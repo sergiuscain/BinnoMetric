@@ -62,11 +62,4 @@ public class EmployeesController : ControllerBase
     {
         return await _employeesService.GetAsync(id);
     }
-    // Потом разберусь, как правильно обновлять сотрудника. Там надо с парсингом в DTO и обратно разобраться.
-    ////internal async Task<EmployeeDTO> UpdateAsync(EmployeeDTO value)
-    ////[HttpPut("UpdateEmployee")]
-    ////public async Task<EmployeeDTO> UpdateAsync(EmployeeDTO value)
-    ////{
-    ////    return await _employeesService.UpdateAsync(value);
-    ////}
 }
